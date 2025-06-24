@@ -57,7 +57,7 @@
             <img class="img-avatar img-avatar32" src="assets/media/avatars/avatar10.jpg" alt="">
           </a>
           <!-- END User Avatar -->
-
+      
           <!-- User Info -->
           <div class="ms-2">
             <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">John Smith</a>
@@ -956,9 +956,17 @@
                   <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
                     <span class="fs-sm fw-medium">Lock Account</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_signin.html">
-                    <span class="fs-sm fw-medium">Log Out</span>
-                  </a>
+                   <li class="nav-item d-none d-sm-inline-block">
+              <a class="nav-link" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+               {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+      </li>
                 </div>
               </div>
             </div>
