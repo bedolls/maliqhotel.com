@@ -22,6 +22,7 @@ Route::get('/cektemplate', function () {
 
 
 Auth::routes();
-
+// tampilan home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// tampilan dashboard
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
