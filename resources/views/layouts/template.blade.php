@@ -15,7 +15,7 @@
 
     <title>MALIQHOTEL</title>
 
-    <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
+    <meta name="description" content="MALIQHOTEL">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="index, follow">
 
@@ -47,6 +47,41 @@
   </head>
 
   <body>
+    <!-- Page Container -->
+    <!--
+      Available classes for #page-container:
+
+      SIDEBAR and SIDE OVERLAY
+
+        'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
+        'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
+        'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
+        'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
+        'sidebar-dark'                              Dark themed sidebar
+
+        'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
+        'side-overlay-o'                            Visible Side Overlay by default
+
+        'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
+
+        'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
+
+      HEADER
+
+        ''                                          Static Header if no class is added
+        'page-header-fixed'                         Fixed Header
+
+      HEADER STYLE
+
+        ''                                          Light themed Header
+        'page-header-dark'                          Dark themed Header
+
+      MAIN CONTENT LAYOUT
+
+        ''                                          Full width Main Content if no class is added
+        'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
+        'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
+    -->
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
       <!-- Side Overlay-->
       <aside id="side-overlay">
@@ -57,7 +92,7 @@
             <img class="img-avatar img-avatar32" src="assets/media/avatars/avatar10.jpg" alt="">
           </a>
           <!-- END User Avatar -->
-      
+
           <!-- User Info -->
           <div class="ms-2">
             <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">John Smith</a>
@@ -613,279 +648,41 @@
                   <span class="nav-main-link-name">Dashboard</span>
                 </a>
               </li>
+            </ul>
+             <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-layers"></i>
-                  <span class="nav-main-link-name">Resepsionis</span>
+                <a class="nav-main-link" href="be_pages_dashboard.html">
+                  <i class="nav-main-link-icon fas fa-house-chimney-window"></i>
+                  <span class="nav-main-link-name">Kamar</span>
                 </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                      <i class="nav-main-link-icon si si-bag"></i>
-                      <span class="nav-main-link-name">User</span>
-                    </a>
-                    <ul class="nav-main-submenu">
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_pages_ecom_dashboard.html">
-                          <span class="nav-main-link-name">Rooms</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_pages_ecom_orders.html">
-                          <span class="nav-main-link-name">Boking</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_pages_ecom_products.html">
-                          <span class="nav-main-link-name">Payment</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_pages_ecom_product_edit.html">
-                          <span class="nav-main-link-name">Customer</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  
-                  
-                  
-                  
-                  <li class="nav-main-item">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                      <i class="nav-main-link-icon si si-magnet"></i>
-                      <span class="nav-main-link-name">Images</span>
-                    </a>
-                    <ul class="nav-main-submenu">
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_dashboard.html">
-                          <span class="nav-main-link-name">Dashboard</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_search.html">
-                          <span class="nav-main-link-name">Search</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_simple_1.html">
-                          <span class="nav-main-link-name">Simple 1</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_simple_2.html">
-                          <span class="nav-main-link-name">Simple 2</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_image_1.html">
-                          <span class="nav-main-link-name">Image 1</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_image_2.html">
-                          <span class="nav-main-link-name">Image 2</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_video_1.html">
-                          <span class="nav-main-link-name">Video 1</span>
-                        </a>
-                      </li>
-                      <li class="nav-main-item">
-                        <a class="nav-main-link" href="bd_video_2.html">
-                          <span class="nav-main-link-name">Video 2</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-lock"></i>
-                  <span class="nav-main-link-name">Authentication</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="be_pages_auth_all.html">
-                      <span class="nav-main-link-name">All</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signin.html">
-                      <span class="nav-main-link-name">Sign In</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signin2.html">
-                      <span class="nav-main-link-name">Sign In 2</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signin3.html">
-                      <span class="nav-main-link-name">Sign In 3</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signup.html">
-                      <span class="nav-main-link-name">Sign Up</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signup2.html">
-                      <span class="nav-main-link-name">Sign Up 2</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_signup3.html">
-                      <span class="nav-main-link-name">Sign Up 3</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_lock.html">
-                      <span class="nav-main-link-name">Lock Screen</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_lock2.html">
-                      <span class="nav-main-link-name">Lock Screen 2</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_lock3.html">
-                      <span class="nav-main-link-name">Lock Screen 3</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_reminder.html">
-                      <span class="nav-main-link-name">Pass Reminder</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_reminder2.html">
-                      <span class="nav-main-link-name">Pass Reminder 2</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_reminder3.html">
-                      <span class="nav-main-link-name">Pass Reminder 3</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_two_factor.html">
-                      <span class="nav-main-link-name">Two Factor</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_two_factor2.html">
-                      <span class="nav-main-link-name">Two Factor 2</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_auth_two_factor3.html">
-                      <span class="nav-main-link-name">Two Factor 3</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-fire"></i>
-                  <span class="nav-main-link-name">Error Pages</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="be_pages_error_all.html">
-                      <span class="nav-main-link-name">All</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_400.html">
-                      <span class="nav-main-link-name">400</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_401.html">
-                      <span class="nav-main-link-name">401</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_403.html">
-                      <span class="nav-main-link-name">403</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_404.html">
-                      <span class="nav-main-link-name">404</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_500.html">
-                      <span class="nav-main-link-name">500</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="op_error_503.html">
-                      <span class="nav-main-link-name">503</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-cup"></i>
-                  <span class="nav-main-link-name">Get Started</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_backend.html">
-                      <span class="nav-main-link-name">Backend</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_backend_boxed.html">
-                      <span class="nav-main-link-name">Backend Boxed</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_landing.html">
-                      <span class="nav-main-link-name">Landing</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_rtl_backend.html">
-                      <span class="nav-main-link-name">RTL Backend</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_rtl_backend_boxed.html">
-                      <span class="nav-main-link-name">RTL Backend Boxed</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="gs_rtl_landing.html">
-                      <span class="nav-main-link-name">RTL Landing</span>
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
-          </div>
-          <!-- END Side Navigation -->
-        </div>
+             <ul class="nav-main">
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="be_pages_dashboard.html">
+                  <i class="nav-main-link-icon fas fa-user"></i>
+                  <span class="nav-main-link-name">Pelanggan</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav-main">
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="be_pages_dashboard.html">
+                  <i class="nav-main-link-icon fas fa-shop"></i>
+                  <span class="nav-main-link-name">Pemesanan</span>
+                </a>
+              </li>
+            </ul>
+             <ul class="nav-main">
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="be_pages_dashboard.html">
+                  <i class="nav-main-link-icon fas fa-user"></i>
+                  <span class="nav-main-link-name">Karyawan</span>
+                </a>
+              </li>
+            </ul>
+             </div>
+      </div>
         <!-- END Sidebar Scrolling -->
       </nav>
       <!-- END Sidebar -->
@@ -956,17 +753,9 @@
                   <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
                     <span class="fs-sm fw-medium">Lock Account</span>
                   </a>
-                   <li class="nav-item d-none d-sm-inline-block">
-              <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-               document.getElementById('logout-form').submit();">
-               {{ __('Logout') }}
-        </a>
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-      </li>
+                  <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_signin.html">
+                    <span class="fs-sm fw-medium">Log Out</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1162,6 +951,6 @@
         Core libraries and functionality
         webpack is putting everything together at assets/_js/main/app.js
     -->
-    <script src="assets/js/oneui.app.min.js"></script>
+    <script src="{{asset('/assets/js/oneui.app.min.js')}}"></script>
   </body>
 </html>
