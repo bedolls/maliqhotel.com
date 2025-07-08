@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\kamarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +15,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
-Route::get('/cektemplate', function () {
     return view('layouts.template');
 })->middleware('auth');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// Route::get('/cektemplate', function () {
+//     return view('layouts.template');
+// })->middleware('auth');
 
 
 Auth::routes();
 // tampilan home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// tampilan dashboard
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // tampilan kamar
-Route::get('/kamar', [App\Http\Controllers\KamarController::class, 'index'])->name('home');
+Route::get('/kamar', [KamarController::class, 'index'])->name('kamar.index');
+Route::post('/kamar', [KamarController::class, 'store'])->name('kamar.store');
+Route::get('/kamar/create', [KamarController::class, 'create'])->name('kamar.create');
+Route::get('/kamar/{id}/edit', [KamarController::class, 'edit'])->name('kamar.edit');
+Route::delete('/kamar/{id}', [KamarController::class, 'destroy'])->name('kamar.destroy');
+Route::put('/kamar/{id}', [KamarController::class, 'update'])->name('kamar.update');
+
+
+
+
+
+
+

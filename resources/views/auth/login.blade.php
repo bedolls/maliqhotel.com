@@ -13,37 +13,37 @@
     -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+    <title>MALIQ &amp; HOTEL</title>
 
-    <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
+    <meta name="description" content="MALIQ &amp; HOTEL">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework">
-    <meta property="og:site_name" content="OneUI">
-    <meta property="og:description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
+    <meta property="og:title" content="MALIQ &amp; HOTEL">
+    <meta property="og:site_name" content="MALIQHOTEL">
+    <meta property="og:description" content="MALIQ &amp; HOTEL">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-    <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/media/favicons/favicon-192x192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/media/favicons/apple-touch-icon-180x180.png">
+    <link rel="shortcut icon" href="{{asset('/assets/media/favicons/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{asset('/assets/media/favicons/favicon-192x192.png')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/assets/media/favicons/apple-touch-icon-180x180.png')}}">
     <!-- END Icons -->
 
     <!-- Stylesheets -->
     <!-- OneUI framework -->
-    <link rel="stylesheet" id="css-main" href="assets/css/oneui.min.css">
+    <link rel="stylesheet" id="css-main" href="{{asset('/assets/css/oneui.min.css')}}">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
     <!-- END Stylesheets -->
 
     <!-- Load and set color theme + dark mode preference (blocking script to prevent flashing) -->
-    <script src="assets/js/setTheme.js"></script>
+    <script src="{{asset('/assets/js/setTheme.js')}}"></script>
   </head>
 
   <body>
@@ -94,16 +94,16 @@
               <div class="p-4 p-xl-5 flex-grow-1 d-flex align-items-center">
                 <div class="w-100">
                   <a class="link-fx fw-semibold fs-2 text-white" href="index.html">
-                    OneUI
+                    MLAIQHOTEL
                   </a>
                   <p class="text-white-75 me-xl-8 mt-2">
-                    Welcome to your amazing app. Feel free to login and start managing your projects and clients.
+                    Welcome to MALIQHOTEL provides roomss,facilities and beautiful views
                   </p>
                 </div>
               </div>
               <div class="p-4 p-xl-5 d-xl-flex justify-content-between align-items-center fs-sm">
                 <p class="fw-medium text-white-50 mb-0">
-                  <strong>OneUI 5.10</strong> &copy; <span data-toggle="year-copy"></span>
+                  <strong>MALIQ HOTEL</strong> &copy; <span data-toggle="year-copy"></span>
                 </p>
                 <ul class="list list-inline mb-0 py-2">
                   <li class="list-inline-item">
@@ -124,7 +124,7 @@
             <div class="hero-static col-lg-8 d-flex flex-column align-items-center bg-body-extra-light">
               <div class="p-3 w-100 d-lg-none text-center">
                 <a class="link-fx fw-semibold fs-3 text-dark" href="index.html">
-                  OneUI
+                  MALIQ HOTEL
                 </a>
               </div>
               <div class="p-4 w-100 flex-grow-1 d-flex align-items-center">
@@ -219,16 +219,16 @@
         Core libraries and functionality
         webpack is putting everything together at assets/_js/main/app.js
     -->
-    <script src="assets/js/oneui.app.min.js"></script>
+    <script src="{{asset('/assets/js/oneui.app.min.js')}}"></script>
 
     <!-- jQuery (required for jQuery Validation plugin) -->
-    <script src="assets/js/lib/jquery.min.js"></script>
+    <script src="{{asset('/assets/js/lib/jquery.min.js')}}"></script>
 
     <!-- Page JS Plugins -->
-    <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="{{asset('/assets/js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 
     <!-- Page JS Code -->
-    <script src="assets/js/pages/op_auth_signin.min.js"></script>
+    <script src="{{asset('/assets/js/pages/op_auth_signin.min.js')}}"></script>
   </body>
 </html>
 

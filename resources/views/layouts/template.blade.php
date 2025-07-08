@@ -2,18 +2,10 @@
 <html lang="en" class="remember-theme">
   <head>
     <meta charset="utf-8">
-    <!--
-      Available classes for <html> element:
 
-      'dark'                  Enable dark mode - Default dark mode preference can be set in app.js file (always saved and retrieved in localStorage afterwards):
-                                window.One = new App({ darkMode: "system" }); // "on" or "off" or "system"
-      'dark-custom-defined'   Dark mode is always set based on the preference in app.js file (no localStorage is used)
-      'remember-theme'        Remembers active color theme between pages using localStorage when set through
-                                - Theme helper buttons [data-toggle="theme"]
-    -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>MALIQHOTEL</title>
+    <title>@yield('MALIQHOTEL')</title>
 
     <meta name="description" content="MALIQHOTEL">
     <meta name="author" content="pixelcave">
@@ -32,56 +24,14 @@
     <link rel="shortcut icon" href="{{asset('/assets/media/favicons/favicon.png')}}">
     <link rel="icon" type="image/png" sizes="192x192" href="{{asset('/assets/media/favicons/favicon-192x192.png')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/assets/media/favicons/apple-touch-icon-180x180.png')}}">
-    <!-- END Icons -->
 
-    <!-- Stylesheets -->
-    <!-- OneUI framework -->
     <link rel="stylesheet" id="css-main" href="{{asset('/assets/css/oneui.min.css')}}">
 
-    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
-    <!-- END Stylesheets -->
 
-    <!-- Load and set color theme + dark mode preference (blocking script to prevent flashing) -->
     <script src="{{asset('/assets/js/setTheme.js')}}"></script>
   </head>
 
   <body>
-    <!-- Page Container -->
-    <!--
-      Available classes for #page-container:
-
-      SIDEBAR and SIDE OVERLAY
-
-        'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
-        'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
-        'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
-        'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
-        'sidebar-dark'                              Dark themed sidebar
-
-        'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
-        'side-overlay-o'                            Visible Side Overlay by default
-
-        'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
-
-        'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
-
-      HEADER
-
-        ''                                          Static Header if no class is added
-        'page-header-fixed'                         Fixed Header
-
-      HEADER STYLE
-
-        ''                                          Light themed Header
-        'page-header-dark'                          Dark themed Header
-
-      MAIN CONTENT LAYOUT
-
-        ''                                          Full width Main Content if no class is added
-        'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
-        'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-    -->
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
       <!-- Side Overlay-->
       <aside id="side-overlay">
@@ -95,7 +45,7 @@
 
           <!-- User Info -->
           <div class="ms-2">
-            <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">John Smith</a>
+            <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">MALIQHOTEL</a>
           </div>
           <!-- END User Info -->
 
@@ -514,20 +464,6 @@
         <!-- END Side Content -->
       </aside>
       <!-- END Side Overlay -->
-
-
-      <!-- Sidebar -->
-      <!--
-          Sidebar Mini Mode - Display Helper classes
-
-          Adding 'smini-hide' class to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
-          Adding 'smini-show' class to an element will make it visible (opacity: 1) when the sidebar is in mini mode
-              If you would like to disable the transition animation, make sure to also add the 'no-transition' class to your element
-
-          Adding 'smini-hidden' to an element will hide it when the sidebar is in mini mode
-          Adding 'smini-visible' to an element will show it (display: inline-block) only when the sidebar is in mini mode
-          Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
-      -->
       <nav id="sidebar" aria-label="Main Navigation">
         <!-- Side Header -->
         <div class="content-header">
@@ -536,7 +472,7 @@
             <span class="smini-visible">
               <i class="fa fa-circle-notch text-primary"></i>
             </span>
-            <span class="smini-hide fs-5 tracking-wider">OneUI</span>
+            <span class="smini-hide fs-5 tracking-wider">MALIQHOTEL</span>
           </a>
           <!-- END Logo -->
 
@@ -641,17 +577,9 @@
         <div class="js-sidebar-scroll">
           <!-- Side Navigation -->
           <div class="content-side">
-            <ul class="nav-main">
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
-                  <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">Dashboard</span>
-                </a>
-              </li>
-            </ul>
              <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
+                <a class="nav-main-link" href="{{ route('kamar.index') }}">
                   <i class="nav-main-link-icon fas fa-house-chimney-window"></i>
                   <span class="nav-main-link-name">Kamar</span>
                 </a>
@@ -659,7 +587,7 @@
             </ul>
              <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
+                <a class="nav-main-link" href="/Pelanggan">
                   <i class="nav-main-link-icon fas fa-user"></i>
                   <span class="nav-main-link-name">Pelanggan</span>
                 </a>
@@ -667,7 +595,7 @@
             </ul>
             <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
+                <a class="nav-main-link" href="/Pemesanan">
                   <i class="nav-main-link-icon fas fa-shop"></i>
                   <span class="nav-main-link-name">Pemesanan</span>
                 </a>
@@ -675,7 +603,7 @@
             </ul>
              <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
+                <a class="nav-main-link" href="/Karyawan">
                   <i class="nav-main-link-icon fas fa-user"></i>
                   <span class="nav-main-link-name">Karyawan</span>
                 </a>
@@ -725,14 +653,14 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ms-2">
               <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle" src="assets/media/avatars/avatar10.jpg" alt="Header Avatar" style="width: 21px;">
-                <span class="d-none d-sm-inline-block ms-2">John</span>
+                <img class="rounded-circle" src="{{asset('/assets/media/avatars/avatar10.jpg')}}" alt="Header Avatar" style="width: 21px;">
+                <span class="d-none d-sm-inline-block ms-2">ADMIN</span>
                 <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                 <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-                  <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/media/avatars/avatar10.jpg" alt="">
-                  <p class="mt-2 mb-0 fw-medium">John Smith</p>
+                  <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('/assets/media/avatars/avatar10.jpg')}}" alt="">
+                  <p class="mt-2 mb-0 fw-medium">ADMIN</p>
                   <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
                 </div>
                 <div class="p-2">
@@ -753,8 +681,16 @@
                   <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
                     <span class="fs-sm fw-medium">Lock Account</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_signin.html">
-                    <span class="fs-sm fw-medium">Log Out</span>
+                  <a class="dropdown-item d-flex align-items-center justify-content-between" href="#" 
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                         <span class="fs-sm fw-medium">
+                             <i class="si si-logout me-2"></i>Log Out
+                           </span>
+                              </a>
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                             @csrf
+                            </form>
+
                   </a>
                 </div>
               </div>
@@ -896,10 +832,10 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
               <div class="flex-grow-1">
                 <h1 class="h3 fw-bold mb-1">
-                  Blank
+                  MALIQHOTEL
                 </h1>
                 <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                  That feeling of delight when you start your awesome new project!
+                  SELAMAT BEKERJA DENGAN DISIPLIN DAN SEMNGAT KERJA YANG BAIK
                 </h2>
               </div>
               <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
@@ -918,12 +854,7 @@
         <!-- END Hero -->
 
         <!-- Page Content -->
-        <div class="content">
-          <h2 class="content-heading">Your Content <small>Subtitle</small></h2>
-          <p>
-            ...
-          </p>
-        </div>
+         @yield('content')
         <!-- END Page Content -->
       </main>
       <!-- END Main Container -->
@@ -933,10 +864,10 @@
         <div class="content py-3">
           <div class="row fs-sm">
             <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-              Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">pixelcave</a>
+              Created with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">Abdul Malik Al - Hanif</a>
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-              <a class="fw-semibold" href="https://pixelcave.com/products/oneui" target="_blank">OneUI 5.10</a> &copy; <span data-toggle="year-copy"></span>
+              <a class="fw-semibold" href="https://pixelcave.com/products/oneui" target="_blank">MALIQHOTEL.COM</a> &copy; <span data-toggle="year-copy"></span>
             </div>
           </div>
         </div>
