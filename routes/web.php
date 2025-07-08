@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kamarController;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,14 @@ Route::get('/kamar/create', [KamarController::class, 'create'])->name('kamar.cre
 Route::get('/kamar/{id}/edit', [KamarController::class, 'edit'])->name('kamar.edit');
 Route::delete('/kamar/{id}', [KamarController::class, 'destroy'])->name('kamar.destroy');
 Route::put('/kamar/{id}', [KamarController::class, 'update'])->name('kamar.update');
+
+// tampilan pelanggan
+Route::get('/pelanggan', [pelangganController::class, 'index'])->name('pelanggan.index');
+Route::get('/pelanggan/create', [pelangganController::class, 'create'])->name('pelanggan.create');
+Route::post('/pelanggan', [pelangganController::class, 'store'])->name('pelanggan.store');
+Route::get('/pelanggan/{pelanggan}/edit', [pelangganController::class, 'edit'])->name('pelanggan.edit');
+Route::put('/pelanggan/{pelanggan}', [pelangganController::class, 'update'])->name('pelanggan.update');
+Route::delete('/pelanggan/{pelanggan}', [pelangganController::class, 'destroy'])->name('pelanggan.destroy');
 
 
 

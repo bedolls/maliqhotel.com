@@ -587,7 +587,7 @@
             </ul>
              <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/Pelanggan">
+                <a class="nav-main-link" href="/pelanggan">
                   <i class="nav-main-link-icon fas fa-user"></i>
                   <span class="nav-main-link-name">Pelanggan</span>
                 </a>
@@ -835,7 +835,7 @@
                   MALIQHOTEL
                 </h1>
                 <h2 class="fs-base lh-base fw-medium text-muted mb-0">
-                  SELAMAT BEKERJA DENGAN DISIPLIN DAN SEMNGAT KERJA YANG BAIK
+                  SELAMAT BEKERJA DENGAN DISIPLIN DAN SEMANGAT KERJA YANG BAIK
                 </h2>
               </div>
               <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">

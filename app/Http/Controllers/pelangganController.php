@@ -1,64 +1,64 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Pelanggan;
 
 class pelangganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $pelanggan = pelanggan::all();
+        return view('layouts.Pelanggan.index', compact('pelanggan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('layouts.Pelanggan.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string',
+            'alamat' => 'required|string',
+            'jenis_kelamin' => 'required|string',
+            'no_hp' => 'required|string',
+        ]);
+
+        $pelanggan = new Pelanggan;
+        $pelanggan->nama   = $request->nama;
+        $pelanggan->alamat  = $request->alamat;
+        $pelanggan->jenis_kelamin  = $request->jenis_kelamin;
+        $pelanggan->no_hp      = $request->no_hp;
+        $pelanggan->save();
+
+
+         return redirect('/pelanggan');  
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Pelanggan $pelanggan)
     {
-        //
+        return view('layouts.Pelanggan.edit', compact('pelanggan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Pelanggan $pelanggan)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string',
+            'alamat' => 'required|string',
+            'no_hp' => 'required|string',
+        ]);
+
+        $pelanggan->update($request->all());
+
+        return redirect()->route('pelanggan.index')->with('success', 'Data pelanggan berhasil diperbarui');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Pelanggan $pelanggan)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $pelanggan->delete();
+        return redirect()->route('pelanggan.index')->with('success', 'Data pelanggan berhasil dihapus');
     }
 }
