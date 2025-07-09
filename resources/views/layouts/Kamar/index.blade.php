@@ -35,10 +35,11 @@
                                         <td>{{ $kamar->kapasitas }} orang</td>
                                         <td>Rp{{ number_format($kamar->harga, 0, ',', '.') }}</td>
                                         <td>
-                                            <a href="{{ route('kamar.edit', $kamar->id) }}" class="btn btn-sm btn-warning me-1">
-                                                <i class="fa fa-edit"></i> Edit
-                                            </a>
-                                            <form action="{{ route('kamar.destroy', $kamar->id) }}" method="POST" class="d-inline"
+                                            <a href="{{ route('kamar.edit', $kamar->id) }}"
+                                             class="btn btn-sm btn-warning me-1">
+                                                <i class="fa fa-edit"></i> Edit</a>
+                                            <form action="{{ route('kamar.destroy', $kamar->id) }}"
+                                             method="POST" class="d-inline"
                                                 onsubmit="return confirm('Yakin ingin menghapus kamar ini?')">
                                                 @csrf
                                                 @method('DELETE')

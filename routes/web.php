@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kamarController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\KaryawanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,14 @@ Route::post('/pelanggan', [pelangganController::class, 'store'])->name('pelangga
 Route::get('/pelanggan/{pelanggan}/edit', [pelangganController::class, 'edit'])->name('pelanggan.edit');
 Route::put('/pelanggan/{pelanggan}', [pelangganController::class, 'update'])->name('pelanggan.update');
 Route::delete('/pelanggan/{pelanggan}', [pelangganController::class, 'destroy'])->name('pelanggan.destroy');
+
+// tampilan karyawan
+Route::get('/karyawan', [karyawanController::class, 'index'])->name('karyawan.index');
+Route::get('/karyawan/create', [karyawanController::class, 'create'])->name('karyawan.create');
+Route::post('/karyawan', [karyawanController::class, 'store'])->name('karyawan.store');
+Route::get('/karyawan/{karyawan}/edit', [karyawanController::class, 'edit'])->name('karyawan.edit');
+Route::put('/karyawan/{karyawan}', [karyawanController::class, 'update'])->name('karyawan.update');
+Route::delete('/karyawan/{karyawan}', [karyawanController::class, 'destroy'])->name('karyawan.destroy');
 
 
 

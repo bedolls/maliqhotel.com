@@ -17,13 +17,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/mahasiswa">Mahasiswa</a>
+                    <a class="nav-link active" aria-current="page" href="/kamar">Kamar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/dosen">Dosen</a>
+                    <a class="nav-link" href="/pelanggan">Pelanggan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/galeri">Galeri</a>
+                    <a class="nav-link" href="/karyawan">Karyawan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pemesanan">Pemesanan</a>
                 </li>
 
                 </ul>

@@ -595,7 +595,7 @@
             </ul>
             <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/Pemesanan">
+                <a class="nav-main-link" href="/pemesanan">
                   <i class="nav-main-link-icon fas fa-shop"></i>
                   <span class="nav-main-link-name">Pemesanan</span>
                 </a>
@@ -603,7 +603,7 @@
             </ul>
              <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/Karyawan">
+                <a class="nav-main-link" href="/karyawan">
                   <i class="nav-main-link-icon fas fa-user"></i>
                   <span class="nav-main-link-name">Karyawan</span>
                 </a>
