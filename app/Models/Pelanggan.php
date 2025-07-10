@@ -9,14 +9,19 @@ class Pelanggan extends Model
 {
     use HasFactory;
 
-    // Nama tabel di database (opsional kalau sesuai konvensi Laravel)
     protected $table = 'pelanggans';
 
-    // Field yang boleh diisi (fillable)
     protected $fillable = [
         'nama',
         'alamat',
         'jenis_kelamin',
         'no_hp',
     ];
+
+    // Tambahkan relasi ke tabel pemesanans
+    public function pemesanans()
+    {
+        return $this->hasMany(Pemesanan::class, 'no_pelanggan');
+    }
 }
+

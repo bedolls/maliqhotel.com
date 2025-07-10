@@ -2,63 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class pemesananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Menampilkan semua data pemesanan
     public function index()
     {
-        //
+        $pemesanans = pemesanan::all(); // Tanpa relasi
+        return view('pemesanan.index', compact('pemesanans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Form tambah
     public function create()
     {
-        //
+        return view('pemesanan.form'); // Tidak perlu kirim data lain
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Simpan data baru
     public function store(Request $request)
-    {
-        //
+{
+    $request->validate([
+        'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan',
+        'nama_pelanggan'  => 'required|string|max:255',
+        'tipe_kamar'      => 'required|string|max:255',
+        'total_harga'     => 'required|numeric',
+        'foto'            => 'nullable|image|max:2048',
+    ]);
+
+    $data = $request->only(['no_pemesanan', 'nama_pelanggan', 'tipe_kamar', 'total_harga']);
+
+    if ($request->hasFile('foto')) {
+        $data['foto'] = $request->file('foto')->store('pemesanan_foto', 'public');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    Pemesanan::create($data);
+
+    return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil ditambahkan.');
+}
+
+public function update(Request $request, $id)
+{
+    $pemesanan = Pemesanan::findOrFail($id);
+
+    $request->validate([
+        'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan,' . $pemesanan->id,
+        'nama_pelanggan'  => 'required|string|max:255',
+        'tipe_kamar'      => 'required|string|max:255',
+        'total_harga'     => 'required|numeric',
+        'foto'            => 'nullable|image|max:2048',
+    ]);
+
+    $data = $request->only(['no_pemesanan', 'nama_pelanggan', 'tipe_kamar', 'total_harga']);
+
+    if ($request->hasFile('foto')) {
+        if ($pemesanan->foto && Storage::disk('public')->exists($pemesanan->foto)) {
+            Storage::disk('public')->delete($pemesanan->foto);
+        }
+        $data['foto'] = $request->file('foto')->store('pemesanan_foto', 'public');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    $pemesanan->update($data);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil diperbarui.');
+}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    // Hapus data
+    public function destroy($id)
     {
-        //
+        $pemesanan = Pemesanan::findOrFail($id);
+
+        if ($pemesanan->foto && Storage::disk('public')->exists($pemesanan->foto)) {
+            Storage::disk('public')->delete($pemesanan->foto);
+        }
+
+        $pemesanan->delete();
+
+        return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil dihapus.');
     }
+    public function edit($id)
+{
+    $pemesanan = Pemesanan::findOrFail($id);
+    return view('pemesanan.edit', compact('pemesanan'));
+}
+
 }

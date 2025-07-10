@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
 
-class kamarController extends Controller
+class KamarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         // menampilkan data kamar
         $nomor = 1;
         $kamar = Kamar::all();
-        return view('layouts.kamar.index',compact('kamar','nomor'));
+        return view('layouts.kamar.index', compact('kamar', 'nomor'));
     }
 
     /**
@@ -23,7 +22,7 @@ class kamarController extends Controller
      */
     public function create()
     {
-          return view('layouts.Kamar.form');
+        return view('layouts.kamar.form');
     }
 
     /**
@@ -31,50 +30,61 @@ class kamarController extends Controller
      */
     public function store(Request $request)
     {
-          // Validasi data
         $request->validate([
-            'tipe_kmr' => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'tipe_kmr'   => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
             'kapasitas' => 'required|numeric|min:1',
-            'harga' => 'required|string',
-   
+            'harga'     => 'required|numeric|min:0',
         ]);
 
-        $kamar = new kamar;
+        $kamar = new Kamar;
         $kamar->tipe_kmr   = $request->tipe_kmr;
         $kamar->kapasitas  = $request->kapasitas;
         $kamar->harga      = $request->harga;
         $kamar->save();
 
-
-        return redirect('/kamar');
+        return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil ditambahkan.');
+        
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit($id)
-{
-    $kamar = Kamar::findOrFail($id);
-    return view('layouts.Kamar.edit', compact('kamar'));
-}
+    {
+        $kamar = Kamar::findOrFail($id);
+        return view('layouts.kamar.edit', compact('kamar'));
+    }
 
-public function update(Request $request, $id)
-{
-    $request->validate([
-        'no_kmr' => 'required|numeric|min:0|unique:kamars,no_kmr',
-        'tipe_kmr' => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
-        'kapasitas' => 'required|numeric|min:1',
-        'harga' => 'required|numeric|min:0',
-    ]);
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $kamar = Kamar::findOrFail($id);
 
-    $kamar = Kamar::findOrFail($id);
-    $kamar->update($request->all());
+        $request->validate([
+            'tipe_kmr'   => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'kapasitas' => 'required|numeric|min:1',
+            'harga'     => 'required|numeric|min:0',
+        ]);
 
-    return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil diperbarui.');
-}
+        $kamar->update([
+            'tipe_kmr'   => $request->tipe_kmr,
+            'kapasitas' => $request->kapasitas,
+            'harga'     => $request->harga,
+        ]);
 
-  public function destroy($id)
-{
-    $kamar = \App\Models\Kamar::findOrFail($id);
-    $kamar->delete();
+        return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil diperbarui.');
+    }
 
-    return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil dihapus.');
-}
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $kamar = Kamar::findOrFail($id);
+        $kamar->delete();
+
+        return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil dihapus.');
+    }
 }

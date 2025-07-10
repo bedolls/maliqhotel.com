@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\TipeKamar; 
 
 class Kamar extends Model
 {
@@ -16,7 +15,8 @@ class Kamar extends Model
         'harga',
     ];
 
-    protected $casts = [
-        'tipe_kmr' => TipeKamar::class,
-    ];
+    // HAPUS bagian casts jika tidak memakai enum lagi
+    // protected $casts = [
+    //     'tipe_kmr' => TipeKamar::class,
+    // ];
 }

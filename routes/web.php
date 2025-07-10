@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kamarController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\pelangganController;
+use App\Http\Controllers\karyawanController;
+use App\Http\Controllers\pemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,8 @@ Route::get('/karyawan/{karyawan}/edit', [karyawanController::class, 'edit'])->na
 Route::put('/karyawan/{karyawan}', [karyawanController::class, 'update'])->name('karyawan.update');
 Route::delete('/karyawan/{karyawan}', [karyawanController::class, 'destroy'])->name('karyawan.destroy');
 
-
+// tampilan pemesanan
+Route::resource('pemesanan', pemesananController::class);
 
 
 

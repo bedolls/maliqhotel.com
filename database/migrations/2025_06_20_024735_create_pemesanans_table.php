@@ -4,29 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
-             $table->string('no_pemesanans')->unique();
-               $table->bigInteger('no_pelanggan');
-              $table->bigInteger('tipe_kmr');
-               $table->string('foto')->nullable();
-                 $table->integer('total_harga');
+            $table->string('no_pemesanan')->unique();
+            $table->string('nama_pelanggan')->nullable();
+            $table->string('tipe_kamar');      // ⬅ Input manual juga
+            $table->string('foto')->nullable();
+            $table->integer('total_harga');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('pemesanans');
     }
 };
+
