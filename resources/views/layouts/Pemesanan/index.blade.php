@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($pemesanans as $i => $pemesanan)
+                    @forelse($pemesanan as $p => $pemesanan)
                     <tr>
                         <td>{{ $i + 1 }}</td>
                         <td>{{ $pemesanan->no_pemesanan }}</td>

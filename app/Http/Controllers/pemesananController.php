@@ -11,8 +11,8 @@ class pemesananController extends Controller
     // Menampilkan semua data pemesanan
     public function index()
     {
-        $pemesanans = pemesanan::all(); // Tanpa relasi
-        return view('pemesanan.index', compact('pemesanans'));
+        $pemesanan = pemesanan::all(); // Tanpa relasi
+        return view('layouts.Pemesanan.index', compact('pemesanan'));
     }
 
     // Form tambah
