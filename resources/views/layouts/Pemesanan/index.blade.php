@@ -30,7 +30,7 @@
                 <tbody>
                     @forelse($pemesanan as $p => $pemesanan)
                     <tr>
-                        <td>{{ $i + 1 }}</td>
+                        <td>{{ $p + 1 }}</td>
                         <td>{{ $pemesanan->no_pemesanan }}</td>
                         <td>{{ $pemesanan->nama_pelanggan ?? '-' }}</td>
                         <td>{{ ucfirst($pemesanan->tipe_kamar) ?? '-' }}</td>

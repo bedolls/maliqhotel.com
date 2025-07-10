@@ -18,7 +18,7 @@ class pemesananController extends Controller
     // Form tambah
     public function create()
     {
-        return view('pemesanan.form'); // Tidak perlu kirim data lain
+        return view('layouts.Pemesanan.form'); // Tidak perlu kirim data lain
     }
 
     // Simpan data baru
@@ -80,13 +80,12 @@ public function update(Request $request, $id)
         }
 
         $pemesanan->delete();
-
-        return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil dihapus.');
+        return redirect()->route('pemesanan.index')->with('success', 'Data pelanggan berhasil dihapus');
     }
     public function edit($id)
 {
     $pemesanan = Pemesanan::findOrFail($id);
-    return view('pemesanan.edit', compact('pemesanan'));
+    return view('layouts.pemesanan.edit', compact('pemesanan'));
 }
 
 }

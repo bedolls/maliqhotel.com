@@ -6,8 +6,8 @@
             <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="mb-0">Daftar Kamar</h3>
-                  <a href="{{ url('/kamar/create') }}">Tambah Kamar <i class="fa fa-plus me-1"></i> </a>
-                       
+                  <a href="{{ route('kamar.create') }}" class="btn btn-primary">
+                       Tambah kamar
                     </a>
                 </div>
 
