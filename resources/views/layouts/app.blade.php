@@ -31,11 +31,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/mahasiswa">Data Mahasiswa</a>
+                            <a class="nav-link" href="/pemesanan">Data pemesanan</a>
                         </li>
-
+                    </ul> 
+                    <ul class="navbar-nav me-auto">
+                     <li class="nav-item">
+                            <a class="nav-link" href="/kamar">Data kamar</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/dosen">Data Dosen</a>
+                            <a class="nav-link" href="/pelanggan">Data pelanggan</a>
+                        </li>
+                    </ul>
+                    <ul>
+                    <ul class="navbar-nav me-auto">
+                            <a class="nav-link" href="/karyawan">Data karyawan</a>
                         </li>
                     </ul>
 

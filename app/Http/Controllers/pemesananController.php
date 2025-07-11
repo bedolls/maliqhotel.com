@@ -27,12 +27,14 @@ class pemesananController extends Controller
     $request->validate([
         'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan',
         'nama_pelanggan'  => 'required|string|max:255',
+        'check_in'        => 'required|date',
+        'check_out'       => 'required|date|after_or_equal:check_in',
         'tipe_kamar'      => 'required|string|max:255',
         'total_harga'     => 'required|numeric',
         'foto'            => 'nullable|image|max:2048',
     ]);
 
-    $data = $request->only(['no_pemesanan', 'nama_pelanggan', 'tipe_kamar', 'total_harga']);
+    $data = $request->only(['no_pemesanan', 'nama_pelanggan','check_in','check_out', 'tipe_kamar', 'total_harga']);
 
     if ($request->hasFile('foto')) {
         $data['foto'] = $request->file('foto')->store('pemesanan_foto', 'public');

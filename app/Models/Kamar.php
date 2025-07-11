@@ -13,6 +13,7 @@ class Kamar extends Model
         'tipe_kmr',
         'kapasitas',
         'harga',
+        'foto_kamar',
     ];
 
     // HAPUS bagian casts jika tidak memakai enum lagi

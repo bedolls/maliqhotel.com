@@ -60,6 +60,20 @@
     </select>
 </div>
 
+{{-- Check In --}}
+<div class="mb-3">
+    <label for="check_in" class="form-label">Check In</label>
+    <input type="date" class="form-control" name="check_in" id="check_in"
+        value="{{ old('check_in', $pemesanan->check_in ?? '') }}">
+</div>
+
+{{-- Check Out --}}
+<div class="mb-3">
+    <label for="check_out" class="form-label">Check Out</label>
+    <input type="date" class="form-control" name="check_out" id="check_out"
+        value="{{ old('check_out', $pemesanan->check_out ?? '') }}">
+</div>
+
 
                 {{-- Total Harga --}}
                 <div class="mb-3">

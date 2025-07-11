@@ -18,11 +18,13 @@ return new class extends Migration {
                 'superior',
                 'suite',
                 'excecutive',
-                'family',
+                'family_one',
+                'family_two',
                 'vip'
             ]);
 
             $table->integer('kapasitas');
+
             $table->integer('harga');
 
             $table->timestamps();

@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kamar;
+use Illuminate\Support\Facades\Storage;
 
-class KamarController extends Controller
+class kamarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Tampilkan semua kamar
     public function index()
     {
         $nomor = 1;
@@ -17,72 +16,80 @@ class KamarController extends Controller
         return view('layouts.kamar.index', compact('kamar', 'nomor'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Form tambah kamar
     public function create()
     {
         return view('layouts.kamar.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Simpan kamar baru
     public function store(Request $request)
     {
         $request->validate([
-            'tipe_kmr'   => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
-            'kapasitas' => 'required|numeric|min:1',
-            'harga'     => 'required|numeric|min:0',
+            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'kapasitas'  => 'required|numeric|min:1',
+            'harga'      => 'required|numeric|min:0',
+            'foto_kamar' => 'nullable|image|max:2048', // max 2MB
         ]);
 
-        $kamar = new Kamar;
-        $kamar->tipe_kmr   = $request->tipe_kmr;
-        $kamar->kapasitas  = $request->kapasitas;
-        $kamar->harga      = $request->harga;
-        $kamar->save();
+        $data = $request->only(['tipe_kmr', 'kapasitas', 'harga']);
+
+        if ($request->hasFile('foto_kamar')) {
+            $data['foto_kamar'] = $request->file('foto_kamar')->store('foto_kamar', 'public');
+        }
+
+        Kamar::create($data);
 
         return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil ditambahkan.');
-        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Form edit
     public function edit($id)
     {
         $kamar = Kamar::findOrFail($id);
         return view('layouts.kamar.edit', compact('kamar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Update kamar
     public function update(Request $request, $id)
     {
         $kamar = Kamar::findOrFail($id);
 
         $request->validate([
-            'tipe_kmr'   => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
-            'kapasitas' => 'required|numeric|min:1',
-            'harga'     => 'required|numeric|min:0',
+            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'kapasitas'  => 'required|numeric|min:1',
+            'harga'      => 'required|numeric|min:0',
+            'foto_kamar' => 'nullable|image|max:2048',
         ]);
 
-        $kamar->update([
-            'tipe_kmr'   => $request->tipe_kmr,
-            'kapasitas' => $request->kapasitas,
-            'harga'     => $request->harga,
-        ]);
+        $data = $request->only(['tipe_kmr', 'kapasitas', 'harga']);
+
+        // Jika ada file foto baru diupload
+        if ($request->hasFile('foto_kamar')) {
+            // Hapus foto lama jika ada
+            if ($kamar->foto_kamar && Storage::disk('public')->exists($kamar->foto_kamar)) {
+                Storage::disk('public')->delete($kamar->foto_kamar);
+            }
+
+            // Simpan foto baru
+            $data['foto_kamar'] = $request->file('foto_kamar')->store('foto_kamar', 'public');
+        }
+
+        $kamar->update($data);
 
         return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Hapus kamar
     public function destroy($id)
     {
         $kamar = Kamar::findOrFail($id);
+
+        // Hapus file foto dari storage jika ada
+        if ($kamar->foto_kamar && Storage::disk('public')->exists($kamar->foto_kamar)) {
+            Storage::disk('public')->delete($kamar->foto_kamar);
+        }
+
         $kamar->delete();
 
         return redirect()->route('kamar.index')->with('success', 'Data kamar berhasil dihapus.');

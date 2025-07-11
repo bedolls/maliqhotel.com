@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('no_pemesanan')->unique();
             $table->string('nama_pelanggan')->nullable();
-            $table->string('tipe_kamar');      // ⬅ Input manual juga
+            $table->string('tipe_kamar'); 
             $table->string('foto')->nullable();
             $table->integer('total_harga');
             $table->timestamps();
