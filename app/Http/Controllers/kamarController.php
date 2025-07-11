@@ -26,7 +26,7 @@ class kamarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family one,family two,vip',
             'kapasitas'  => 'required|numeric|min:1',
             'harga'      => 'required|numeric|min:0',
             'foto_kamar' => 'nullable|image|max:2048', // max 2MB
@@ -56,7 +56,7 @@ class kamarController extends Controller
         $kamar = Kamar::findOrFail($id);
 
         $request->validate([
-            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family,vip',
+            'tipe_kmr'    => 'required|in:standar,deluxe,deluxe view,superior,suite,excecutive,family one,family two,vip',
             'kapasitas'  => 'required|numeric|min:1',
             'harga'      => 'required|numeric|min:0',
             'foto_kamar' => 'nullable|image|max:2048',

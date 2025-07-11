@@ -15,8 +15,8 @@
         <option value="superior">Superior</option>
         <option value="suite">Suite</option>
         <option value="excecutive">Excecutive</option>
-        <option value="family_one">Family 1</option>
-        <option value="family_two">Family 2</option>
+        <option value="family one">Family 1</option>
+        <option value="family two">Family 2</option>
         <option value="vip">VIP</option>
       </select>
     </div>

@@ -18,9 +18,9 @@ return new class extends Migration {
                 'superior',
                 'suite',
                 'excecutive',
-                'family_one',
-                'family_two',
-                'vip'
+                'family one',
+                'family two',
+                'vip',
             ]);
 
             $table->integer('kapasitas');
