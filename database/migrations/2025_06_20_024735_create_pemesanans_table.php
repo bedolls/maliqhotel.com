@@ -11,7 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('no_pemesanan')->unique();
             $table->string('nama_pelanggan')->nullable();
-            $table->string('tipe_kamar'); 
+            $table->unsignedBigInteger('kamar_id'); // foreign key
+            $table->foreign('kamar_id')->references('id')->on('kamars')->onDelete('cascade');
             $table->string('foto')->nullable();
             $table->integer('total_harga');
             $table->timestamps();

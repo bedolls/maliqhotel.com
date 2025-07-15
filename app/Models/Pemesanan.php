@@ -15,6 +15,13 @@ class Pemesanan extends Model
         'total_harga',
         'foto',
     ];
+
+    public function kamar()
+{
+    return $this->belongsTo(Kamar::class);
 }
+
+}
+
 
 

@@ -6,7 +6,7 @@
 @section('content')
 <div class="container mt-4">
     <div class="card">
-        <div class="card-header">Form Tambah Pelanggan</div>
+        <div class="card-header">Form Tambah Karyawan</div>
         <div class="card-body">
           @if ($errors->any())
                 <div class="alert alert-danger">

@@ -15,6 +15,11 @@ class Kamar extends Model
         'harga',
         'foto_kamar',
     ];
+    public function pemesanans()
+{
+    return $this->hasMany(Pemesanan::class);
+}
+
 
     // HAPUS bagian casts jika tidak memakai enum lagi
     // protected $casts = [

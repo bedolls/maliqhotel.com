@@ -44,21 +44,20 @@
         value="{{ old('nama_pelanggan', $pemesanan->nama_pelanggan ?? '') }}" required>
 </div>
 
-<!-- Tipe Kamar -->
+<!-- Tipe Kamar dan kamar_id -->
 <div class="mb-3">
-    <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
-    <select class="form-control" name="tipe_kamar" required>
+    <label for="kamar_id" class="form-label">Tipe Kamar</label>
+    <select class="form-control" name="kamar_id" required>
         <option value="">-- Pilih Tipe Kamar --</option>
-        @php
-            $tipeOptions = ['standar', 'deluxe', 'deluxe view', 'superior', 'suite', 'excecutive', 'family', 'vip'];
-        @endphp
-        @foreach($tipeOptions as $tipe)
-            <option value="{{ $tipe }}" {{ old('tipe_kamar', $pemesanan->tipe_kamar ?? '') == $tipe ? 'selected' : '' }}>
-                {{ ucfirst($tipe) }}
+        @foreach($kamars as $kamar)
+            <option value="{{ $kamar->id }}"
+                {{ old('kamar_id', $pemesanan->kamar_id ?? '') == $kamar->id ? 'selected' : '' }}>
+                {{ ucfirst($kamar->tipe_kmr) }} - Rp{{ number_format($kamar->harga, 0, ',', '.') }}
             </option>
         @endforeach
     </select>
 </div>
+
 
 {{-- Check In --}}
 <div class="mb-3">
