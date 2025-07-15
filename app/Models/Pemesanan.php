@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,17 +12,16 @@ class Pemesanan extends Model
     protected $fillable = [
         'no_pemesanan',
         'nama_pelanggan',
-        'tipe_kamar',
-        'total_harga',
+        'kamar_id',
+        'check_in',
+        'check_out',
         'foto',
+        'total_harga',
     ];
 
+    // Relasi ke model Kamar
     public function kamar()
-{
-    return $this->belongsTo(Kamar::class);
+    {
+        return $this->belongsTo(Kamar::class);
+    }
 }
-
-}
-
-
-

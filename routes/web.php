@@ -56,7 +56,12 @@ Route::put('/karyawan/{karyawan}', [karyawanController::class, 'update'])->name(
 Route::delete('/karyawan/{karyawan}', [karyawanController::class, 'destroy'])->name('karyawan.destroy');
 
 // tampilan pemesanan
-Route::resource('pemesanan', pemesananController::class);
+Route::get('/pemesanan', [pemesananController::class, 'index'])->name('pemesanan.index');
+Route::get('/pemesanan/create', [pemesananController::class, 'create'])->name('pemesanan.create');
+Route::post('/pemesanan', [pemesananController::class, 'store'])->name('pemesanan.store');
+Route::get('/pemesanan/{pemesanan}/edit', [pemesananController::class, 'edit'])->name('pemesanan.edit');
+Route::put('/pemesanan/{pemesanan}', [pemesananController::class, 'update'])->name('pemesanan.update');
+Route::delete('/pemesanan/{pemesanan}', [pemesananController::class, 'destroy'])->name('pemesanan.destroy');
 
 
 

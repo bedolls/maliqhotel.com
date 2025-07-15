@@ -20,13 +20,13 @@
                     <a class="nav-link active" aria-current="page" href="/kamar">Kamar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pelanggan">Pelanggan</a>
+                    <a class="nav-link active" href="/pelanggan">Pelanggan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/karyawan">Karyawan</a>
+                    <a class="nav-link active" href="/karyawan">Karyawan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pemesanan">Pemesanan</a>
+                    <a class="nav-link acitve" href="/pemesanan">Pemesanan</a>
                 </li>
 
                 </ul>

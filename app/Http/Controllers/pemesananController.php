@@ -7,11 +7,11 @@ use App\Models\Kamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PemesananController extends Controller
+class pemesananController extends Controller
 {
     public function index()
     {
-        $pemesanan = Pemesanan::with('kamar')->get(); // gunakan eager loading
+        $pemesanan = Pemesanan::with('kamar')->get();
         return view('layouts.Pemesanan.index', compact('pemesanan'));
     }
 
@@ -24,16 +24,23 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_pemesanan'   => 'required|unique:pemesanans,no_pemesanan',
-            'nama_pelanggan' => 'required|string|max:255',
-            'check_in'       => 'required|date',
-            'check_out'      => 'required|date|after_or_equal:check_in',
-            'kamar_id'       => 'required|exists:kamars,id',
-            'total_harga'    => 'required|numeric',
-            'foto'           => 'nullable|image|max:2048',
+            'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan',
+            'nama_pelanggan'  => 'required|string|max:255',
+            'kamar_id'        => 'required|exists:kamars,id',
+            'check_in'        => 'required|date',
+            'check_out'       => 'required|date|after_or_equal:check_in',
+            'total_harga'     => 'required|numeric',
+            'foto'            => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->only(['no_pemesanan', 'nama_pelanggan', 'check_in', 'check_out', 'kamar_id', 'total_harga']);
+        $data = $request->only([
+            'no_pemesanan',
+            'nama_pelanggan',
+            'kamar_id',
+            'check_in',
+            'check_out',
+            'total_harga',
+        ]);
 
         if ($request->hasFile('foto')) {
             $data['foto'] = $request->file('foto')->store('pemesanan_foto', 'public');
@@ -41,7 +48,7 @@ class PemesananController extends Controller
 
         Pemesanan::create($data);
 
-        return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil ditambahkan.');
+        return redirect()->route('pemesanan.index')->with('success', 'Pemesanan berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -56,16 +63,23 @@ class PemesananController extends Controller
         $pemesanan = Pemesanan::findOrFail($id);
 
         $request->validate([
-            'no_pemesanan'   => 'required|unique:pemesanans,no_pemesanan,' . $pemesanan->id,
-            'nama_pelanggan' => 'required|string|max:255',
-            'check_in'       => 'required|date',
-            'check_out'      => 'required|date|after_or_equal:check_in',
-            'kamar_id'       => 'required|exists:kamars,id',
-            'total_harga'    => 'required|numeric',
-            'foto'           => 'nullable|image|max:2048',
+            'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan,' . $pemesanan->id,
+            'nama_pelanggan'  => 'required|string|max:255',
+            'kamar_id'        => 'required|exists:kamars,id',
+            'check_in'        => 'required|date',
+            'check_out'       => 'required|date|after_or_equal:check_in',
+            'total_harga'     => 'required|numeric',
+            'foto'            => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->only(['no_pemesanan', 'nama_pelanggan', 'check_in', 'check_out', 'kamar_id', 'total_harga']);
+        $data = $request->only([
+            'no_pemesanan',
+            'nama_pelanggan',
+            'kamar_id',
+            'check_in',
+            'check_out',
+            'total_harga',
+        ]);
 
         if ($request->hasFile('foto')) {
             if ($pemesanan->foto && Storage::disk('public')->exists($pemesanan->foto)) {
@@ -76,7 +90,7 @@ class PemesananController extends Controller
 
         $pemesanan->update($data);
 
-        return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil diperbarui.');
+        return redirect()->route('pemesanan.index')->with('success', 'Pemesanan berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -89,6 +103,6 @@ class PemesananController extends Controller
 
         $pemesanan->delete();
 
-        return redirect()->route('pemesanan.index')->with('success', 'Data pemesanan berhasil dihapus.');
+        return redirect()->route('pemesanan.index')->with('success', 'Pemesanan berhasil dihapus.');
     }
 }
