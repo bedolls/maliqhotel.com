@@ -30,10 +30,18 @@
                     <label for="alamat" class="form-label">Alamat</label>
                     <textarea name="alamat" class="form-control" required>{{ old('alamat', $pelanggan->alamat) }}</textarea>
                 </div>
-                 <div class="mb-3">
-                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <input type="text" name="jenis_kelamin" class="form-control" value="{{ old('jenis_kelamin', $pelanggan->jenis_kelamin) }}" required>
-                </div>
+                <div class="mb-3">
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
+                 <div class="form-check form-check-inline">
+                   <input class="form-check-input" type="radio" name="jenis_kelamin" id="laki_laki" value="Laki-laki" required>
+                    <label class="form-check-label" for="laki_laki">Laki-laki</label>
+                 </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="jenis_kelamin" id="perempuan" value="Perempuan" required>
+        <label class="form-check-label" for="perempuan">Perempuan</label>
+    </div>
+</div>
+
                 <div class="mb-3">
                     <label for="no_hp" class="form-label">No HP</label>
                     <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp', $pelanggan->no_hp) }}" required>

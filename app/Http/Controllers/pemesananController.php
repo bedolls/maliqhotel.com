@@ -8,7 +8,7 @@ use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class PemesananController extends Controller
+class pemesananController extends Controller
 {
     public function index()
     {
@@ -33,6 +33,7 @@ class PemesananController extends Controller
             'total_harga'     => 'required|numeric',
             'foto'            => 'nullable|image|max:2048',
         ]);
+        
 
         $data = $request->only([
             'pelanggan_id',

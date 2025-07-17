@@ -10,8 +10,7 @@ class Pemesanan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_pemesanan',
-        'nama_pelanggan',
+        'pelanggan_id',
         'kamar_id',
         'check_in',
         'check_out',
