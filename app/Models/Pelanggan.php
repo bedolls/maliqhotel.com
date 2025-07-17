@@ -18,10 +18,9 @@ class Pelanggan extends Model
         'no_hp',
     ];
 
-    // Tambahkan relasi ke tabel pemesanans
+    // Relasi: Satu pelanggan bisa punya banyak pemesanan
     public function pemesanans()
     {
-        return $this->hasMany(Pemesanan::class, 'no_pelanggan');
+        return $this->hasMany(Pemesanan::class, 'pelanggan_id');
     }
 }
-

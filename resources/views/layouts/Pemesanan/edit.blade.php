@@ -2,80 +2,73 @@
 
 @section('content')
 <div class="container">
-  <h3>Form Pemesanan</h3>
-  <form action="{{ isset($pemesanan) ? route('pemesanan.update', $pemesanan->id) : route('pemesanan.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @if(isset($pemesanan)) @method('PUT') @endif
+    <h3>Edit Pemesanan</h3>
+    <form action="{{ route('pemesanan.update', $pemesanan->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-    <div class="mb-3">
-      <label for="no_pemesanan" class="form-label">No Pemesanan</label>
-      <input type="text" class="form-control" name="no_pemesanan" value="{{ old('no_pemesanan', $pemesanan->no_pemesanan ?? '') }}" required>
-    </div>
+        <div class="mb-3">
+            <label for="pelanggan_id" class="form-label">Pelanggan</label>
+            <select name="pelanggan_id" class="form-control" required>
+                @foreach($pelanggans as $pelanggan)
+                    <option value="{{ $pelanggan->id }}" {{ $pemesanan->pelanggan_id == $pelanggan->id ? 'selected' : '' }}>
+                        {{ $pelanggan->nama }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="mb-3">
-      <label for="nama_pelanggan" class="form-label">Nama Pelanggan</label>
-      <input type="text" class="form-control" name="nama_pelanggan" value="{{ old('nama_pelanggan', $pemesanan->nama_pelanggan ?? '') }}" required>
-    </div>
+        <div class="mb-3">
+            <label for="kamar_id" class="form-label">Tipe Kamar</label>
+            <select name="kamar_id" id="kamar_id" class="form-control" required>
+                @foreach($kamars as $kamar)
+                    <option value="{{ $kamar->id }}" data-harga="{{ $kamar->harga }}" {{ $pemesanan->kamar_id == $kamar->id ? 'selected' : '' }}>
+                        {{ $kamar->tipe_kmr }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="mb-3">
-      <label for="kamar_id" class="form-label">Tipe Kamar</label>
-      <select class="form-control" name="kamar_id" id="kamar_id" required>
-        <option value="">-- Pilih Kamar --</option>
-        @foreach($kamars as $kamar)
-          <option value="{{ $kamar->id }}" data-harga="{{ $kamar->harga }}"
-            {{ (old('kamar_id', $pemesanan->kamar_id ?? '') == $kamar->id) ? 'selected' : '' }}>
-            {{ ucfirst($kamar->tipe_kmr) }} - Rp{{ number_format($kamar->harga, 0, ',', '.') }}
-          </option>
-        @endforeach
-      </select>
-    </div>
+        <div class="mb-3">
+            <label for="check_in" class="form-label">Check-in</label>
+            <input type="date" name="check_in" id="check_in" value="{{ $pemesanan->check_in }}" class="form-control" required>
+        </div>
 
-    <div class="mb-3">
-      <label for="check_in" class="form-label">Check In</label>
-      <input type="date" class="form-control" name="check_in" id="check_in" value="{{ old('check_in', $pemesanan->check_in ?? '') }}" required>
-    </div>
+        <div class="mb-3">
+            <label for="check_out" class="form-label">Check-out</label>
+            <input type="date" name="check_out" id="check_out" value="{{ $pemesanan->check_out }}" class="form-control" required>
+        </div>
 
-    <div class="mb-3">
-      <label for="check_out" class="form-label">Check Out</label>
-      <input type="date" class="form-control" name="check_out" id="check_out" value="{{ old('check_out', $pemesanan->check_out ?? '') }}" required>
-    </div>
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" name="foto" class="form-control">
+            @if($pemesanan->foto)
+                <img src="{{ asset('storage/' . $pemesanan->foto) }}" width="100" class="img-thumbnail mt-2">
+            @endif
+        </div>
 
-    <div class="mb-3">
-      <label for="total_harga" class="form-label">Total Harga</label>
-      <input type="text" class="form-control" name="total_harga" id="total_harga" value="{{ old('total_harga', $pemesanan->total_harga ?? '') }}" readonly>
-    </div>
+        <div class="mb-3">
+            <label for="total_harga" class="form-label">Total Harga</label>
+            <input type="text" name="total_harga" id="total_harga" value="{{ $pemesanan->total_harga }}" class="form-control" readonly>
+        </div>
 
-    <div class="mb-3">
-      <label for="foto" class="form-label">Foto</label>
-      <input type="file" class="form-control" name="foto">
-      @if(isset($pemesanan) && $pemesanan->foto)
-        <img src="{{ asset('storage/' . $pemesanan->foto) }}" width="100" class="mt-2 img-thumbnail">
-      @endif
-    </div>
-
-    <button type="submit" class="btn btn-success">Simpan</button>
-  </form>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
 </div>
 
 <script>
-  function hitungTotalHarga() {
-    const harga = document.querySelector('#kamar_id').selectedOptions[0]?.getAttribute('data-harga') ?? 0;
-    const checkIn = new Date(document.querySelector('#check_in').value);
-    const checkOut = new Date(document.querySelector('#check_out').value);
-    const totalHargaField = document.querySelector('#total_harga');
-
-    if (checkIn && checkOut && !isNaN(checkIn) && !isNaN(checkOut)) {
-      const selisihHari = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
-      if (selisihHari >= 0) {
-        totalHargaField.value = harga * (selisihHari || 1);
-      } else {
-        totalHargaField.value = '';
-      }
+    function hitungTotal() {
+        const harga = parseFloat(document.querySelector('#kamar_id option:checked')?.getAttribute('data-harga') || 0);
+        const checkIn = new Date(document.getElementById('check_in').value);
+        const checkOut = new Date(document.getElementById('check_out').value);
+        if (harga && checkIn && checkOut && checkOut > checkIn) {
+            const selisihHari = (checkOut - checkIn) / (1000 * 3600 * 24);
+            document.getElementById('total_harga').value = harga * selisihHari;
+        }
     }
-  }
 
-  document.querySelector('#kamar_id').addEventListener('change', hitungTotalHarga);
-  document.querySelector('#check_in').addEventListener('change', hitungTotalHarga);
-  document.querySelector('#check_out').addEventListener('change', hitungTotalHarga);
+    document.getElementById('kamar_id').addEventListener('change', hitungTotal);
+    document.getElementById('check_in').addEventListener('change', hitungTotal);
+    document.getElementById('check_out').addEventListener('change', hitungTotal);
 </script>
 @endsection

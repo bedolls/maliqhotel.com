@@ -24,4 +24,10 @@ class Pemesanan extends Model
     {
         return $this->belongsTo(Kamar::class);
     }
+    // relasi ke model Pelanggan
+    public function pelanggan()
+{
+    return $this->belongsTo(Pelanggan::class);
+}
+
 }

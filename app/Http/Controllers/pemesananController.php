@@ -4,28 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Pemesanan;
 use App\Models\Kamar;
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class pemesananController extends Controller
+class PemesananController extends Controller
 {
     public function index()
     {
-        $pemesanan = Pemesanan::with('kamar')->get();
+        $pemesanan = Pemesanan::with(['kamar', 'pelanggan'])->get(); // Tambah 'pelanggan'
         return view('layouts.Pemesanan.index', compact('pemesanan'));
     }
 
     public function create()
     {
         $kamars = Kamar::all();
-        return view('layouts.Pemesanan.form', compact('kamars'));
+        $pelanggans = Pelanggan::all(); // Ambil semua pelanggan
+        return view('layouts.Pemesanan.form', compact('kamars', 'pelanggans'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan',
-            'nama_pelanggan'  => 'required|string|max:255',
+            'pelanggan_id'    => 'required|exists:pelanggans,id',
             'kamar_id'        => 'required|exists:kamars,id',
             'check_in'        => 'required|date',
             'check_out'       => 'required|date|after_or_equal:check_in',
@@ -34,8 +35,7 @@ class pemesananController extends Controller
         ]);
 
         $data = $request->only([
-            'no_pemesanan',
-            'nama_pelanggan',
+            'pelanggan_id',
             'kamar_id',
             'check_in',
             'check_out',
@@ -55,7 +55,8 @@ class pemesananController extends Controller
     {
         $pemesanan = Pemesanan::findOrFail($id);
         $kamars = Kamar::all();
-        return view('layouts.Pemesanan.edit', compact('pemesanan', 'kamars'));
+        $pelanggans = Pelanggan::all(); // Tambah data pelanggan
+        return view('layouts.Pemesanan.edit', compact('pemesanan', 'kamars', 'pelanggans'));
     }
 
     public function update(Request $request, $id)
@@ -63,8 +64,7 @@ class pemesananController extends Controller
         $pemesanan = Pemesanan::findOrFail($id);
 
         $request->validate([
-            'no_pemesanan'    => 'required|unique:pemesanans,no_pemesanan,' . $pemesanan->id,
-            'nama_pelanggan'  => 'required|string|max:255',
+            'pelanggan_id'    => 'required|exists:pelanggans,id',
             'kamar_id'        => 'required|exists:kamars,id',
             'check_in'        => 'required|date',
             'check_out'       => 'required|date|after_or_equal:check_in',
@@ -73,8 +73,7 @@ class pemesananController extends Controller
         ]);
 
         $data = $request->only([
-            'no_pemesanan',
-            'nama_pelanggan',
+            'pelanggan_id',
             'kamar_id',
             'check_in',
             'check_out',
